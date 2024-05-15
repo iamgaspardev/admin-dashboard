@@ -1,4 +1,3 @@
-"use client"
 import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -87,7 +86,7 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function RootLayout({ children }) {
+export default function Sidebar() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -100,11 +99,9 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    <html lang="en">
-      <body >
-      <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} elevation={0} sx={{backgroundColor:"#32a88d"}}>
+      <AppBar position="fixed" open={open}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -134,7 +131,7 @@ export default function RootLayout({ children }) {
         </DrawerHeader>
         <Divider />
         <List>
-          {["Reports", "Visa", "General", "Drafts"].map((text, index) => (
+          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: "block" }}>
               <ListItemButton
                 sx={{
@@ -185,11 +182,7 @@ export default function RootLayout({ children }) {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        {children}
       </Box>
     </Box>
-       </body>
-    </html>
   );
 }
-
